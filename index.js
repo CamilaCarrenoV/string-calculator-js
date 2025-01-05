@@ -4,22 +4,24 @@ const bottonResult = document.getElementById("result");
 
 function sum() {
     const text = textArea.value;
-    alert(Add(text));
+    const array = text.split("\n");
+    const delimiter = array[0].substring(2);
+    alert(Add(array[1], delimiter));
 }
 
 bottonResult.addEventListener('click', sum);
 
-function Add(numbers) {
+function Add(numbers, delimiter) {
     if (numbers === "") {
       return 0
     }
     
-    numbers = numbers.replace("\n", ",");
-    const arrayNumbers = numbers.split(",");
-  
-    const sum = arrayNumbers.reduce(function (a, b) {
-      return (isNaN(parseInt(a))?0:parseInt(a)) + (isNaN(parseInt(b))?0:parseInt(b));
-    })
+    const arrayNumbers = numbers.split(delimiter);
+    
+   let sum = 0;
+   arrayNumbers.forEach(num => {
+    sum = sum + (isNaN(Number(num))?0:Number(num))
+   })
   
   return sum
     
