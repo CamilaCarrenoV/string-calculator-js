@@ -14,9 +14,7 @@ function Add(numbers) {
       return 0
     }
     const arrayNumbers = numbers.split(",");
-    if (arrayNumbers.length > 2) {
-      return "error"
-    }
+
     const sum = arrayNumbers.reduce(function (a, b) {
       return (isNaN(parseInt(a))?0:parseInt(a)) + (isNaN(parseInt(b))?0:parseInt(b));
     })
