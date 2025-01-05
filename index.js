@@ -13,8 +13,10 @@ function Add(numbers) {
     if (numbers === "") {
       return 0
     }
+    
+    numbers = numbers.replace("\n", ",");
     const arrayNumbers = numbers.split(",");
-
+  
     const sum = arrayNumbers.reduce(function (a, b) {
       return (isNaN(parseInt(a))?0:parseInt(a)) + (isNaN(parseInt(b))?0:parseInt(b));
     })
