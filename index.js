@@ -42,9 +42,11 @@ function Add(numbers, delimiter) {
   }
   
   function getDelimiter(text) {
-    if (text.substring(0, 2) !== '//') {
+
+    if (text.substring(0, 3) !== '//[' || text.substring(text.length -1) !== ']') {
       return '';
     } else {
-      return text.substring(2);
+   
+      return text.substring(3, text.length -1);
     }
   }
