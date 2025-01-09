@@ -24,8 +24,8 @@ function Add(numbers, delimiter) {
     }
     numbers = numbers.replaceAll('\n', delimiter);
 
-    const arrayNumbers = numbers.split(delimiter);
-    
+    const arrayNumbers = numbers.split(delimiter).filter((numberGiants) => Number(numberGiants) <= 1000);
+      
     const negativeNumb = arrayNumbers.filter((number) => Number(number) < 0)
    
     if (negativeNumb.length > 0) {
