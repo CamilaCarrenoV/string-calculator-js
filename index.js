@@ -10,7 +10,8 @@ function sum() {
   if (!delimiter) {
     result = Add(text, ',');
   } else {
-    result = Add(text.substring(text.indexOf('\n') + 1), delimiter);
+    const cleanText = replaceDelimiters(text.substring(text.indexOf('\n') + 1), delimiter);
+    result = Add(cleanText, ',');
   }
   alert(result);
 }
@@ -22,6 +23,8 @@ function Add(numbers, delimiter) {
     if (numbers === "") {
       return 0
     }
+
+
     numbers = numbers.replaceAll('\n', delimiter);
 
     const arrayNumbers = numbers.split(delimiter).filter((numberGiants) => Number(numberGiants) <= 1000);
@@ -46,7 +49,15 @@ function Add(numbers, delimiter) {
     if (text.substring(0, 3) !== '//[' || text.substring(text.length -1) !== ']') {
       return '';
     } else {
-   
-      return text.substring(3, text.length -1);
+      const textDelimiter = text.substring(3, text.length -1);
+      return textDelimiter.split("][");
     }
+  }
+
+  function replaceDelimiters(text, delimiters) {
+    let auxText = text;
+    delimiters.forEach((delimiter)=> {
+      auxText = auxText.replaceAll(delimiter, ",");
+    })
+    return auxText;
   }
